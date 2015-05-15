@@ -20,6 +20,33 @@
 	<canvas id="myCanvas" width="400" height="300" style="border:1px solid #000000;">
 	  Browser does not support the HTML5 canvas tag.
 	</canvas>
+
+	<script>
+	  var ctx = $("#myCanvas")[0].getContext("2d");
+	  ctx.fillStyle = "red";
+	  ctx.fillRect(10, 10, 200, 100);
+
+	  ctx.moveTo(350, 20);
+	  ctx.lineTo(360, 50);
+	  ctx.lineTo(350, 80);
+	  ctx.stroke();
+
+	  // Uint8ClampedArray[48000], RGBA
+	  var data = ctx.getImageData(0, 0, 400, 300);
+	  var w = data.width;
+	  var h = data.height;
+
+	  var redByCol = [];
+	  for (col = 0; col < w; col++) {
+	    var red = 0;
+	    for (row = 0; row < h; row++) {
+	      var i = 4 * (row * w + col);
+	      var d = data.data[i];
+	      red += d;
+	    }
+            redByCol.push(red);
+          }
+	</script>
 	
     </body>
 </html>
