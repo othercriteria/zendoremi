@@ -5,19 +5,18 @@
     "use strict";
 
     // Define a unique global namespace for your stuff.
-    // You should change this to a namespace that is appropriate for your project.
-    fluid.registerNamespace("myStuff");
+    fluid.registerNamespace("zendoremi");
 
     var enviro = flock.init();
 
     // Expose any public functions or constructors as properties on your namesapce.
-    myStuff.play = function () {
+    zendoremi.play = function () {
         var mySynth = flock.synth({
             synthDef: {
-                ugen: "flock.ugen.sin",
+                ugen: "flock.ugen.saw",
                 freq: {
                     ugen: "flock.ugen.lfNoise",
-                    freq: 10,
+                    freq: 5,
                     mul: 380,
                     add: 60
                 },
